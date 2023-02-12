@@ -4,11 +4,22 @@ namespace MusicShop.Controllers
 {
     public class HomeController : Controller
     {
-        public string Index()
+        public ViewResult Index()
         {
-            return "MusicShop";
+            return View();
         }
 
+        public ViewResult AboutUs()
+        {
+            return View();
+        }
+
+        public ViewResult ContactUs()
+        {
+            return View();
+        }
+
+        // 21
 
     }
 }
