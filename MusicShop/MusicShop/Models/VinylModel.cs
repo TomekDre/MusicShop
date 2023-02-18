@@ -11,6 +11,16 @@ namespace MusicShop.Models
 
         public string Artist { get; set; }
 
+        public string Description { get; set; }
+        public string Category { get; set; }
+        public string Label { get; set; }
+        public string Nr { get; set; }
+
+
+
+
+
+
         internal List<VinylModel> ToList()
         {
             throw new NotImplementedException();

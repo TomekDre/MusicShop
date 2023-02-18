@@ -15,12 +15,16 @@ namespace MusicShop.Controllers
 
         public ViewResult GetAllVinyls()
         {
-            return View();
+            var data = _vinylRepository.GetAllVinyls();
+
+            return View(data);
         }
 
-        public VinylModel GetVinyl(int id)
+        public ViewResult GetVinyl(int id)
         {
-            return _vinylRepository.GetVinyl(id);
+            var data = _vinylRepository.GetVinyl(id);
+
+            return View(data);
         }
 
         public List<VinylModel> SearchVinyl(string vinylTitle, string artistName)
