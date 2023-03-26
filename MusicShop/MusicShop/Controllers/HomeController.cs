@@ -4,8 +4,13 @@ namespace MusicShop.Controllers
 {
     public class HomeController : Controller
     {
+        [ViewData]
+        public string CustomProperty { get; set; }
+
         public ViewResult Index()
         {
+            CustomProperty = "Custom value";
+
             return View();
         }
 
@@ -18,6 +23,6 @@ namespace MusicShop.Controllers
         {
             return View();
         }
-        
+        // 37
     }
 }

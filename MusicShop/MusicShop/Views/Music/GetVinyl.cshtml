@@ -1,9 +1,8 @@
-﻿
-@model VinylModel
-
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@{
+    ViewData["Title"] = "Vinyl detail" + Model.Title;
 }
+
+@model VinylModel
 
 <div class="container">
     <h3 class="display-4">Vinyl details</h3>
@@ -61,7 +60,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <button class="btn btn-outline-primary">
-                        Read now
+                        Buy now
                     </button>
                 </div>
             </div>

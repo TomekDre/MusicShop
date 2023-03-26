@@ -1,21 +1,15 @@
-﻿
-@{
-    Layout = "_Layout";
+﻿@{ 
+    ViewData["Title"] = "Home";
 }
 
-@section breadcrumb{
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Page 1</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Page 2</li>
-        </ol>
-    </nav>
+@{ 
+    var vinyl = ViewData["Vinyl"] as VinylModel;
 }
 
 <section class="jumbotron text-center">
     <div class="container">
         <h1>Welcome to Music Shop</h1>
+        <h1>@ViewData["CustomProperty"]</h1>
         <p class="lead text-muted">
             Choose your vinyl
         </p>
