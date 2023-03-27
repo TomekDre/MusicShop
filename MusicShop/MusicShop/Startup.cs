@@ -35,10 +35,11 @@ namespace MusicShop
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
-
-            });
-            
+            endpoints.MapDefaultControllerRoute();
+            //endpoints.MapControllerRoute(
+            //    name: "Default",
+            //    pattern: "musicApp/{controller=Home}/{action=Index}/{id?}");               
+            });         
         }
     }
 }

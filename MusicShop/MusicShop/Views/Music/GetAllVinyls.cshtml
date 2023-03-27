@@ -16,7 +16,8 @@
                         <p class="card-text">@vinyl.Description</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="/music/getvinyl/@vinyl.Id" class="btn btn-sm btn-outline-secondary">View details</a>
+                                <a asp-route="vinylDetailsRoute" asp-route-id="@vinyl.Id"
+                                   class="btn btn-sm btn-outline-secondary">View details</a>
                             </div>
                             <small class="text-muted">@vinyl.Artist</small>
                         </div>

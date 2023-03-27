@@ -17,10 +17,6 @@ namespace MusicShop.Models
         public string Nr { get; set; }
 
 
-
-
-
-
         internal List<VinylModel> ToList()
         {
             throw new NotImplementedException();

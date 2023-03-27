@@ -20,6 +20,7 @@ namespace MusicShop.Controllers
             return View(data);
         }
 
+        [Route("vinyl-details/{id}", Name = "vinylDetailsRoute")]
         public ViewResult GetVinyl(int id)
         {
             var data = _vinylRepository.GetVinyl(id);
