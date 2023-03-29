@@ -32,6 +32,17 @@ namespace MusicShop.Controllers
         {
             return _vinylRepository.SearchVinyl(vinylTitle, artistName);
         }
+
+        public ViewResult AddNewMusic()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ViewResult AddNewMusic(VinylModel vinylModel)
+        {
+            return View();
+        }
+
     }
 }
  

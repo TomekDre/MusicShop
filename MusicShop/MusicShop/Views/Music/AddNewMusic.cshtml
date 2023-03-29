@@ -1,0 +1,26 @@
+﻿@model VinylModel
+@{ 
+    ViewData["Title"] = "Add new music";
+}
+
+    <div class="container">
+        <h3 class="display-4">Add new vinyl</h3>
+        <form method="post" asp-action="AddNewMusic" asp-controller="Music">
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Artist"></label>
+                <input asp-for="Artist" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Add vinyl" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>

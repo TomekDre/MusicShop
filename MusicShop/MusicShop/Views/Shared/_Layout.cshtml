@@ -4,15 +4,22 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewData["Title"] | Music Shop App</title>
-    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/css/Site.css" rel="stylesheet" />
+
+    <link href="~/css/Site.css"
+          rel="stylesheet"
+          asp-fallback-href="~/lib/twitter-bootstrap/css/bootstrap.css"
+          asp-fallback-test-class="sr-only"
+          asp-fallback-test-property="position"
+          asp-fallback-test-value="absolute"
+          integrity="" 
+          crossorigin="anonymous" />
 </head>
 <body>
     <header>
         <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
             <div class="container-fluid">
                 <a class="navbar-brand text-white" href="/">
-                    <img src="~/images/logo.png" width="35" height="35" asp-append-version="true" />
+                    <img src="~/images/logo.png" width="40" height="40" asp-append-version="true" />
                     { MusicShop }
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,16 +37,19 @@
                             <a class="nav-link active text-white" asp-controller="home" asp-action="index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="home" asp-action="aboutus">About_us</a>
+                            <a class="nav-link text-white" asp-controller="home" asp-action="aboutus">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="home" asp-action="contactus">Contact_Us</a>
+                            <a class="nav-link text-white" asp-controller="home" asp-action="contactus">Contact Us</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-controller="music" asp-action="getallvinyls">All Vinyls</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-protocol="http" asp-host="musicshop.com" asp-controller="music" asp-action="getallvinyls">New Link</a>
+                            <a class="nav-link text-white" asp-controller="music" asp-action="addnewmusic">Add new</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-protocol="http" asp-host="hardwax.com">Hard Wax</a>
                         </li>
                     </ul>
                 </div>
