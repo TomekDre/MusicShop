@@ -1,4 +1,6 @@
-﻿using MusicShop.Models;
+﻿using MusicShop.Data;
+using MusicShop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +8,32 @@ namespace MusicShop.Repository
 {
     public class VinylRepository
     {
+        private readonly MusicShopContext _context = null;
+
+        public VinylRepository(MusicShopContext context)
+        {
+            _context = context;
+        }
+
+        public int AddNewVinyl(VinylModel model)
+        {
+            var newMusic = new Music()
+            {
+                Artist = model.Artist,
+                CreatedOn = DateTime.UtcNow,
+                Title = model.Title,
+                Description = model.Description,
+                Category = model.Category,
+                Label = model.Label,
+                Nr = model.Nr,
+                UpdatedOn = DateTime.UtcNow
+            };
+
+            _context.Music.Add(newMusic);
+            _context.SaveChanges();
+
+            return newMusic.Id;
+        }
         public List<VinylModel> GetAllVinyls()
         {
             return DataSource();
