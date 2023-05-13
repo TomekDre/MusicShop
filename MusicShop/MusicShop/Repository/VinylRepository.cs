@@ -3,6 +3,7 @@ using MusicShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MusicShop.Repository
 {
@@ -15,7 +16,7 @@ namespace MusicShop.Repository
             _context = context;
         }
 
-        public int AddNewVinyl(VinylModel model)
+        public async Task<int> AddNewVinyl(VinylModel model)
         {
             var newMusic = new Music()
             {
@@ -29,8 +30,8 @@ namespace MusicShop.Repository
                 UpdatedOn = DateTime.UtcNow
             };
 
-            _context.Music.Add(newMusic);
-            _context.SaveChanges();
+            await _context.Music.AddAsync(newMusic);
+            await _context.SaveChangesAsync();
 
             return newMusic.Id;
         }

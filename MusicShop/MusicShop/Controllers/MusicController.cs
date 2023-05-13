@@ -2,15 +2,16 @@
 using MusicShop.Models;
 using MusicShop.Repository;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MusicShop.Controllers
 {
     public class MusicController : Controller
     {
         private readonly VinylRepository _vinylRepository = null;
-        public MusicController()
+        public MusicController(VinylRepository vinylRepository)
         {
-            _vinylRepository = new VinylRepository();
+            _vinylRepository = vinylRepository;
         }
 
         public ViewResult GetAllVinyls()
@@ -33,13 +34,21 @@ namespace MusicShop.Controllers
             return _vinylRepository.SearchVinyl(vinylTitle, artistName);
         }
 
-        public ViewResult AddNewMusic()
+        public ViewResult AddNewMusic(bool isSuccess = false, int vinylId = 0)
         {
+            ViewBag.IsSuccess = isSuccess;
+            ViewBag.VinylId = vinylId;
             return View();
         }
+
         [HttpPost]
-        public ViewResult AddNewMusic(VinylModel vinylModel)
+        public async Task<IActionResult> AddNewMusic(VinylModel vinylModel)
         {
+            int id = await _vinylRepository.AddNewVinyl(vinylModel);
+            if (id > 0)
+            {
+                return RedirectToAction(nameof(AddNewMusic), new { isSuccess = true, vinylId = id });
+            }
             return View();
         }
 

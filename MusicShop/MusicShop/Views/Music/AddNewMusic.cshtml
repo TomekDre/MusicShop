@@ -5,6 +5,18 @@
 
     <div class="container">
         <h3 class="display-4">Add new vinyl</h3>
+        <hr />
+        @if(ViewBag.IsSuccess)
+        {
+               <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <strong>Congratulations! </strong> Add new vinyl<br/>
+                      Click <a asp-controller="Music" asp-action="GetVinyl" asp-route-id="@ViewBag.VinylId">here</a>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+               </div>
+        }
+        
         <form method="post" asp-action="AddNewMusic" asp-controller="Music">
             <div class="form-group">
                 <label asp-for="Title"></label>
