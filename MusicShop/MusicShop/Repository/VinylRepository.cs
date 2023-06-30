@@ -1,4 +1,5 @@
-﻿using MusicShop.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MusicShop.Data;
 using MusicShop.Models;
 using System;
 using System.Collections.Generic;
@@ -35,21 +36,58 @@ namespace MusicShop.Repository
 
             return newMusic.Id;
         }
-        public List<VinylModel> GetAllVinyls()
+        public async Task<List<VinylModel>> GetAllVinyls()
         {
-            return DataSource();
+            var vinyls = new List<VinylModel>();
+            var allvinyls = await _context.Music.ToListAsync();
+
+            if (allvinyls?.Any()==true)
+            {
+                foreach (var vinyl in allvinyls)
+                {
+                    vinyls.Add(new VinylModel()
+                    {
+                        Artist = vinyl.Artist,
+                        Title = vinyl.Title,
+                        Category = vinyl.Category,
+                        Label = vinyl.Label,
+                        Nr = vinyl.Nr,
+                        Description = vinyl.Description
+                    });
+                }
+            }
+            return vinyls;
         }
-        public VinylModel GetVinyl(int id)
+
+        public async Task<VinylModel> GetVinyl(int id)
         {
-            return DataSource().Where(x => x.Id == id).FirstOrDefault();
-  
+
+            var vinyl = await _context.Music.FindAsync(id);
+            
+            if (vinyl != null)
+            {
+                var vinylDetails = new VinylModel()
+                {
+                    Artist = vinyl.Artist,
+                    Title = vinyl.Title,
+                    Category = vinyl.Category,
+                    Label = vinyl.Label,
+                    Nr = vinyl.Nr,
+                    Description = vinyl.Description
+                };
+
+                return vinylDetails;
+            }
+
+            return null;
+
         }
-        
         public List<VinylModel> SearchVinyl(string title, string artistName)
         {
             return DataSource().Where(x => x.Title.Contains(title) || x.Artist.Contains(artistName)).ToList();
         }
 
+        
         private List<VinylModel> DataSource()
         {
             return new List<VinylModel>()

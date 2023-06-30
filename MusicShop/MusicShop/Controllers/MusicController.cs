@@ -14,17 +14,17 @@ namespace MusicShop.Controllers
             _vinylRepository = vinylRepository;
         }
 
-        public ViewResult GetAllVinyls()
+        public async Task<ViewResult> GetAllVinyls()
         {
-            var data = _vinylRepository.GetAllVinyls();
+            var data = await _vinylRepository.GetAllVinyls();
 
             return View(data);
         }
 
         [Route("vinyl-details/{id}", Name = "vinylDetailsRoute")]
-        public ViewResult GetVinyl(int id)
+        public async Task<ViewResult> GetVinyl(int id)
         {
-            var data = _vinylRepository.GetVinyl(id);
+            var data = await _vinylRepository.GetVinyl(id);
 
             return View(data);
         }
